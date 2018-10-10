@@ -31,8 +31,6 @@ def sign_in(request):
 	except:
 		return JsonResponse({ 'success' : False })
 
-
-	created = False
 	if not User.objects.filter(user_id=data['sub']).exists():
 		obj = User.objects.create(user_id = data['sub'],
 			username = data['name'],
@@ -41,9 +39,6 @@ def sign_in(request):
 			)
 	else:
 		obj = User.objects.get(user_id = data['sub'])
-
-	if created:
-		user_count_channel_push({'count': User.objects.all().count() })
 
 	request.session['user'] = obj.user_id
 
