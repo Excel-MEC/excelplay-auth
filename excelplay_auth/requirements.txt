@@ -6,3 +6,4 @@ Markdown==3.0.1
 pytz==2018.3
 redis==2.10.6
 psycopg2-binary==2.7.5
+gunicorn==19.9.0
