@@ -84,7 +84,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'db',
+        'PASSWORD':'123456789',
+        'HOST': 'localhost',
         'PORT': 5432,
     }
 }
@@ -154,3 +155,4 @@ SESSION_REDIS = {
     'socket_timeout': 10
 }
 
+CORS_ORIGIN_WHITELIST = 'localhost:4200'
