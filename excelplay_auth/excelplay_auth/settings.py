@@ -131,3 +131,16 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# Session settings
+
+SESSION_ENGINE = 'redis_sessions.session'
+
+SESSION_REDIS = {
+    'host': None,
+    'unix_domain_socket_path': '/var/run/redis/redis.sock',
+    'db': 0,
+    'prefix': 'session',
+    'socket_timeout': 10
+}
+
