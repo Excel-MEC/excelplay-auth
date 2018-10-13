@@ -18,7 +18,7 @@ def get_all_users(request):
 def sign_in(request):
     if request.method == "POST":
 
-        data = json.loads(request.body.decode('utf-8'))
+        data = request.POST
 
         if 'access_token' in data:
             access_token = data['access_token']
@@ -29,7 +29,7 @@ def sign_in(request):
         try:
 
             headers = {'Authorization': 'Bearer % s' % access_token}
-            r = requests.get('https://excelplay2k18.auth0.com/userinfo',
+            r = requests.get('https://excelplay2018.auth0.com/userinfo',
                              headers=headers)
 
             userinfo = r.json()
