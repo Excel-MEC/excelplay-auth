@@ -137,8 +137,8 @@ REST_FRAMEWORK = {
 SESSION_ENGINE = 'redis_sessions.session'
 
 SESSION_REDIS = {
-    'host': None,
-    'unix_domain_socket_path': '/var/run/redis/redis.sock',
+    'host': 'localhost',
+    'port': 6379,
     'db': 0,
     'prefix': 'session',
     'socket_timeout': 10

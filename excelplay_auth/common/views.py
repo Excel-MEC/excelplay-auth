@@ -100,4 +100,3 @@ def get_user_detail(request):
     else:
         return JsonResponse({'Error': 'Invalid request'}, status=405)
 
-
