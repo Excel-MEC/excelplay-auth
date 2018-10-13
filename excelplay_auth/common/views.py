@@ -5,6 +5,11 @@ from .models import User
 from .serializers import UserSerializer
 from .decorators import is_logged_in, set_cookies
 
+from django.views.decorators.csrf import csrf_exempt
+
+import json
+
+import requests
 
 def get_all_users(request):
     ''' Get all users '''
@@ -14,11 +19,11 @@ def get_all_users(request):
         serializer = UserSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
+@csrf_exempt
 def sign_in(request):
     if request.method == "POST":
 
-        data = json.loads(request.body.decode('utf-8'))
+        data = request.POST
 
         if 'access_token' in data:
             access_token = data['access_token']
@@ -28,11 +33,13 @@ def sign_in(request):
 
         try:
 
-            headers = {'Authorization': 'Bearer % s' % access_token}
-            r = requests.get('https://excelplay2k18.auth0.com/userinfo',
+            headers = {'Authorization': 'Bearer %s' % access_token}
+            r = requests.get('https://excelplay2018.auth0.com/userinfo',
                              headers=headers)
 
             userinfo = r.json()
+
+            print(userinfo)
             userinfo['sub'] = userinfo['sub'].split('|')[1]
 
             if not User.objects.filter(id=userinfo['sub']).exists():
