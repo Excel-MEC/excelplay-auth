@@ -84,7 +84,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD':'123456789',
         'HOST': 'localhost',
         'PORT': 5432,
     }
@@ -131,6 +130,7 @@ STATIC_URL = '/static/'
 
 CORS_ORIGIN_WHITELIST = (
         'localhost:8000',
+        '*',
     )
 
 # Rest framework settings
@@ -154,5 +154,3 @@ SESSION_REDIS = {
     'prefix': 'session',
     'socket_timeout': 10
 }
-
-CORS_ORIGIN_WHITELIST = 'localhost:4200'
