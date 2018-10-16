@@ -5,6 +5,9 @@ from .models import User
 from .serializers import UserSerializer
 from .decorators import is_logged_in, set_cookies
 
+from django.views.decorators.csrf import csrf_exempt
+
+import requests
 
 def get_all_users(request):
     ''' Get all users '''
@@ -14,7 +17,7 @@ def get_all_users(request):
         serializer = UserSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
+@csrf_exempt
 def sign_in(request):
     if request.method == "POST":
 
@@ -83,8 +86,9 @@ def sign_out(request):
 def get_user_detail(request):
     if request.method == 'GET':
         try:
-            if request.session['user']:
-                user = User.objects.get(id = request.session.get('user'))
+            user=request.session.get('user',False):
+            if user:
+                user = User.objects.get(id = user)
                 data = {'id': user.id,
                         'name': user.name,
                         'profile_picture': user.profile_picture, 
