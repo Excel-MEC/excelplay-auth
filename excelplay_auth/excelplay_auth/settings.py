@@ -84,8 +84,6 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD':'123456789',
-        'HOST': 'localhost',
         'PORT': 5432,
     }
 }
@@ -131,7 +129,8 @@ STATIC_URL = '/static/'
 
 # CORS Config
 CORS_ORIGIN_ALLOW_ALL = True
-CORS_ALLOW_CREDENTIALS = False
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Rest framework settings
 
