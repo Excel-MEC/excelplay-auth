@@ -8,3 +8,4 @@ psycopg2-binary==2.7.5
 pytz==2018.3
 redis==2.10.6
 django-cors-headers
+requests

@@ -87,7 +87,7 @@ def sign_out(request):
 def get_user_detail(request):
     if request.method == 'GET':
         try:
-            user=request.session.get('user',False):
+            user=request.session.get('user',False)
             if user:
                 user = User.objects.get(id = user)
                 data = {'id': user.id,
