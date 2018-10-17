@@ -110,6 +110,6 @@ def test_session(request):
     if request.method == "GET":
         request.session['test'] = True
         request.session.save()
-
+        return JsonResponse({'Success': True})
     else:
         return JsonResponse({'Error': 'Method not allowed'}, status=405)

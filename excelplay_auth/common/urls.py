@@ -7,6 +7,6 @@ urlpatterns = [
         path('signout', sign_out, name='sign_out'),
         path('token', set_token, name='set_token'),
         path('user/detail', get_user_detail, name='get_user_detail'),
-        path('users', get_all_users, name='get_all_users')
+        path('users', get_all_users, name='get_all_users'),
         path('test', test_session, name='test_session')
 ]
