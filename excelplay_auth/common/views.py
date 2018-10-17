@@ -17,6 +17,7 @@ def get_all_users(request):
         serializer = UserSerializer(users, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+
 @csrf_exempt
 def sign_in(request):
     if request.method == "POST":
@@ -104,3 +105,11 @@ def get_user_detail(request):
     else:
         return JsonResponse({'Error': 'Invalid request'}, status=405)
 
+
+def test_session(request):
+    if request.method == "GET":
+        request.session['test'] = True
+        request.session.save()
+
+    else:
+        return JsonResponse({'Error': 'Method not allowed'}, status=405)
