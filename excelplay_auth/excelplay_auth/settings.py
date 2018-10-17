@@ -27,7 +27,7 @@ SECRET_KEY = 'PLAYON'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.200.222.240','localhost']
+ALLOWED_HOSTS = ['35.200.222.240', 'play-demo.excelmec.org']
 
 
 # Application definition
