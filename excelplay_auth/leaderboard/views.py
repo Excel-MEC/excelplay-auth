@@ -78,12 +78,4 @@ def kryptos_ranklist(request):
     
     except:
         return JsonResponse({'Error': 'User not logged in'}, status=403)
-                
-            
-        except:
-            return JsonResponse({'Error': 'Unable to fetch ranklist'}, status=500)
-    
-    except:
-        return JsonResponse({'Error': 'User not logged in'}, status=403)
-
 
