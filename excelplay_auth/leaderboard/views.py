@@ -84,3 +84,8 @@ def kryptos_ranklist(request):
         return JsonResponse({'Error': 'Method not allowed'}, status=405)
 
 
+def test_ldb(request):
+    rdb.add('aa', 'one', 1)
+    s = rdb.get_rank('aa', 'one')
+    print(s)
+    return JsonResponse({'Success': True})
