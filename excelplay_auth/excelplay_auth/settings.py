@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'corsheaders',
 
     'rest_framework',
-    'common',
+    'common.apps.CommonConfig',
+    'leaderboard.apps.LeaderboardConfig',
 ]
 
 MIDDLEWARE = [
