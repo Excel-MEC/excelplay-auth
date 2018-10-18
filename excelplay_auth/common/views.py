@@ -82,7 +82,6 @@ def sign_out(request):
         return JsonResponse({'Error': 'Invalid Request'}, status=405)
 
 
-@set_cookies
 @is_logged_in
 def get_user_detail(request):
     if request.method == 'GET':
@@ -105,11 +104,3 @@ def get_user_detail(request):
     else:
         return JsonResponse({'Error': 'Invalid request'}, status=405)
 
-
-def test_session(request):
-    if request.method == "GET":
-        request.session['test'] = True
-        request.session.save()
-        return JsonResponse({'Success': True})
-    else:
-        return JsonResponse({'Error': 'Method not allowed'}, status=405)

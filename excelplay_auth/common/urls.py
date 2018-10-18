@@ -1,6 +1,6 @@
 from django.urls import path
 
-from .views import sign_in, sign_out, set_token, get_user_detail, get_all_users, test_session
+from .views import sign_in, sign_out, set_token, get_user_detail, get_all_users
 
 urlpatterns = [
         path('signin', sign_in, name='sign_in'),
@@ -8,5 +8,4 @@ urlpatterns = [
         path('token', set_token, name='set_token'),
         path('user/detail', get_user_detail, name='get_user_detail'),
         path('users', get_all_users, name='get_all_users'),
-        path('test', test_session, name='test_session')
 ]
