@@ -84,6 +84,44 @@ def kryptos_ranklist(request):
         return JsonResponse({'Error': 'Method not allowed'}, status=405)
 
 
+@is_logged_in
+def dalalbull_ranklist(request):
+    
+    if request.method == "GET":
+        try:
+            user_id = request.session['user']
+        
+            try:
+                ranklist = []
+
+                users = rdb.get_all('dalalbull')
+                rank = 1
+
+                for user_id, score in users:
+                    player = {}
+                    user = User.objects.get(id=user_id)
+                
+                    player['id'] = user.id 
+                    player['name'] = user.name
+                    player['pic'] = user.profile_picture
+                    player['rank'] = rank
+                    player['level'] = round(score)
+
+                    rank += 1
+                    ranklist.append(player)
+
+                return JsonResponse({'ranklist': ranklist})
+
+            except:
+                return JsonResponse({'Error': 'Internal Server Error'}, status=500)
+    
+        except:
+            return JsonResponse({'Error': 'User not logged in'}, status=403)
+
+    else:
+        return JsonResponse({'Error': 'Method not allowed'}, status=405)
+
+
 def test_ldb(request):
     rdb.add('aa', 'one', 1)
     s = rdb.get_rank('aa', 'one')
