@@ -33,7 +33,7 @@ def sign_in(request):
         try:
 
             headers = {'Authorization': 'Bearer % s' % access_token}
-            r = requests.get('https://excelplay2018.auth0.com/userinfo',
+            r = requests.get('http://ajeshkumar.eu.auth0.com//userinfo',
                              headers=headers)
 
             userinfo = r.json()
