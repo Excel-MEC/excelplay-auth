@@ -18,6 +18,7 @@ def get_all_rank(request):
         
             try:
                 user = User.objects.get(id=user_id)
+                print(user)
                 
                 try:
                     kryptos = rdb.get_rank('kryptos', user_id)
@@ -37,7 +38,8 @@ def get_all_rank(request):
                     print(e)
                     return JsonResponse({'Error': 'Unable to fetch leaderboard'}, status=500)
 
-            except:
+            except Exception as e:
+                print(e)
                 return JsonResponse({'Error': 'Internal server error'}, status=500)
     
         except:
@@ -96,6 +98,7 @@ def dalalbull_ranklist(request):
 
                 users = rdb.get_all('dalalbull')
                 rank = 1
+                print(users)
 
                 for user_id, score in users:
                     player = {}
@@ -112,7 +115,8 @@ def dalalbull_ranklist(request):
 
                 return JsonResponse({'ranklist': ranklist})
 
-            except:
+            except Exception as e:
+                print(e)
                 return JsonResponse({'Error': 'Internal Server Error'}, status=500)
     
         except:

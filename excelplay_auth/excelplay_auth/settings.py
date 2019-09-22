@@ -25,7 +25,7 @@ SECRET_KEY = secretkey
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['35.200.222.240', 'play-demo.excelmec.org','play.excelmec.org']
+ALLOWED_HOSTS = ['35.200.222.240', 'play-demo.excelmec.org','play.excelmec.org', '35.222.101.108']
 
 
 # Application definition
@@ -135,7 +135,7 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = (
-        'localhost:4200',
+        'http://localhost:4200',
     )
 
 # Rest framework settings
