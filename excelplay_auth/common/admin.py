@@ -5,7 +5,7 @@ from .models import User
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'email', 'profile_picture')
-    search_fields = ('name',)
+    search_fields = ('name', 'id')
 
 
 admin.site.register(User, UserAdmin)
