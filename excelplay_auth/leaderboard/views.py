@@ -98,7 +98,6 @@ def dalalbull_ranklist(request):
 
                 users = rdb.get_all('dalalbull')
                 rank = 1
-                print(users)
 
                 for user_id, score in users:
                     player = {}
