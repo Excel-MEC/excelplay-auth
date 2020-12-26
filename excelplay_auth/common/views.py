@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.shortcuts import render
 from django.http import JsonResponse
 
@@ -7,6 +8,7 @@ from .decorators import is_logged_in, set_cookies
 
 from django.views.decorators.csrf import csrf_exempt
 
+import json
 import requests
 import jwt
 
@@ -22,16 +24,18 @@ def get_all_users(request):
 
 @csrf_exempt
 def sign_in(request):
-    if request.method == "GET":
-        key = req.headers.get("Authorization")
+    if request.method == "POST":
+        print(json.loads(request.body.decode("utf-8")))
+        key = json.loads(request.body.decode("utf-8")).get("access_token", False)
+        print(key)
         if not key:
-            return Response("Malformed Token", status.HTTP_401_UNAUTHORIZED)
-        key = key.split(" ")
-        if len(key) != 2:
-            return Response("Malformed Token", status.HTTP_401_UNAUTHORIZED)
-        key = key[1]
+            return JsonResponse({"Malformed Token": True}, status=401)
+        # key = key.split(" ")
+        # if len(key) != 2:
+        #     return Response("Malformed Token", status.HTTP_401_UNAUTHORIZED)
+        # key = key[1]
         try:
-            userinfo = jwt.decode(key, settings.JWT_SECRET_KEY, algorithm="HS512")
+            userinfo = jwt.decode(key, settings.JWT_SECRET_KEY, algorithms="HS512")
 
             if not User.objects.filter(id=userinfo["user_id"]).exists():
                 obj = User.objects.create(
@@ -50,7 +54,7 @@ def sign_in(request):
 
             return JsonResponse({"Success": True})
         except Exception as e:
-            return Response("Malformed Token", status.HTTP_401_UNAUTHORIZED)
+            return JsonResponse({"Malformed Token": True}, status=401)
 
     # if request.method == "POST":
 

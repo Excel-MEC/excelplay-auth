@@ -2,9 +2,9 @@ from django.urls import path
 
 from .views import (
     get_all_rank,
-    kryptos_ranklist,
+    # kryptos_ranklist,
     dalalbull_ranklist,
-    circuimstance_ranklist,
+    # circuimstance_ranklist,
 )
 
 urlpatterns = [
