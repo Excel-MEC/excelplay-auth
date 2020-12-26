@@ -21,6 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 # from secret import secretkey
 SECRET_KEY = "password123"
+JWT_SECRET_KEY = "supersecretkey"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
