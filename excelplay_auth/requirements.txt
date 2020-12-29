@@ -8,4 +8,6 @@ psycopg2-binary==2.7.5
 pytz==2018.3
 redis==2.10.6
 django-cors-headers==3.1.0
+PyJWT==2.0.0
 requests
+django-environ==0.4.5
