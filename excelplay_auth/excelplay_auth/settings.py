@@ -86,10 +86,10 @@ WSGI_APPLICATION = "excelplay_auth.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "auth",
-        "USER": "test",
-        "PASSWORD": "password",
-        "HOST": "dbauth",
+        "NAME": env("DB_NAME_AUTH"),
+        "USER": env("DB_USER_AUTH"),
+        "PASSWORD": env("DB_PASSWORD_AUTH"),
+        "HOST": env("DB_HOST_AUTH"),
         "PORT": 5432,
     }
 }
