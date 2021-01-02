@@ -142,6 +142,7 @@ def get_user_detail(request):
 
 
 # Used by other microservices to get details of a certain user ID. Does not require authentication.
+@csrf_exempt
 def get_user_detail_noauth(request):
     if request.method == "POST":
         userid = json.loads(request.body.decode("utf-8")).get("user_id", False)
