@@ -25,9 +25,7 @@ def get_all_users(request):
 @csrf_exempt
 def sign_in(request):
     if request.method == "POST":
-        print(json.loads(request.body.decode("utf-8")))
         key = json.loads(request.body.decode("utf-8")).get("access_token", False)
-        print(key)
         if not key:
             return JsonResponse({"Malformed Token": True}, status=401)
         # key = key.split(" ")
@@ -139,5 +137,30 @@ def get_user_detail(request):
                 status=500,
             )
 
+    else:
+        return JsonResponse({"Error": "Invalid request"}, status=405)
+
+
+# Used by other microservices to get details of a certain user ID. Does not require authentication.
+def get_user_detail_noauth(request):
+    if request.method == "POST":
+        userid = json.loads(request.body.decode("utf-8")).get("user_id", False)
+        if not userid:
+            return JsonResponse({"Error": "Invalid request"}, status=405)
+        else:
+            try:
+                details = User.objects.get(id=userid)
+                return JsonResponse(
+                    {
+                        "userid": details.id,
+                        "name": details.name,
+                        "email": details.email,
+                        "picture": details.profile_picture,
+                    },
+                    status=200,
+                )
+            except Exception as e:
+                print(e)
+                return JsonResponse({"userid": -1})
     else:
         return JsonResponse({"Error": "Invalid request"}, status=405)
