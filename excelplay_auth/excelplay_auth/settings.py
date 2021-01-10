@@ -26,7 +26,7 @@ environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
 JWT_SECRET_KEY = env("JWT_SECRET_KEY")
 SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
